@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, catchError, of } from 'rxjs';
 
 import { CoursesService } from '../services/courses.service';
 import { Course } from './../model/course';
@@ -10,7 +10,7 @@ import { Course } from './../model/course';
   styleUrls: ['./courses.component.scss']
 })
 export class CoursesComponent implements OnInit{
-  courses: Observable<Course[]>;
+  courses$: Observable<Course[]>;
 
   displayedColumns = ['name','category'];
 
@@ -18,8 +18,12 @@ export class CoursesComponent implements OnInit{
 
 
   constructor(private coursesService: CoursesService){
-    this.courses = this.coursesService.list();
-    
+    this.courses$ = this.coursesService.list()
+    .pipe(
+      catchError(error => {return of([])
+      })
+      );
+
    // this.coursesService = new CoursesService();
 
   }
