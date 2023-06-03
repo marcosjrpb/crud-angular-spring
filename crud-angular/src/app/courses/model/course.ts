@@ -1,7 +1,7 @@
 export interface Course {
 
- _id: string;
+  _id: string;
   name: string;
-category: string
+  category: string
 
 }
