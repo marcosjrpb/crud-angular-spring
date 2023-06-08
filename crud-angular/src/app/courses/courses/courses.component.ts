@@ -6,7 +6,7 @@ import { Course } from './../model/course';
 
 import { MatDialog } from '@angular/material/dialog';
 import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/error-dialog.component';
-import { ActivatedRoute, Route, Router, RoutesRecognized } from '@angular/router';
+import { ActivatedRoute, Router,} from '@angular/router';
 
 @Component({
   selector: 'app-courses',
@@ -14,8 +14,8 @@ import { ActivatedRoute, Route, Router, RoutesRecognized } from '@angular/router
   styleUrls: ['./courses.component.scss']
 })
 export class CoursesComponent implements OnInit{
-  courses$: Observable<Course[]>;
 
+   courses$: Observable<Course[]>;
   displayedColumns = ['name','category','actions'];
 
   //coursesService: CoursesService;
@@ -51,7 +51,7 @@ export class CoursesComponent implements OnInit{
 
   }
   ngOnInit(): void {
-    
+
   }
 
   onAdd(){
