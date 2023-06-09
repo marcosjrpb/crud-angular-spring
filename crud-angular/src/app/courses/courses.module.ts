@@ -5,8 +5,8 @@ import { AppMaterialModule } from 'src/app/shared/app-material/app-material.modu
 
 import { SharedModule } from '../shared/shared.module';
 import { CoursesRoutingModule } from './courses-routing.module';
-import { CoursesComponent } from './courses/courses.component';
-import { CoursesListComponent } from './courses-list/courses-list.component';
+import { CoursesComponent } from './containers/courses/courses.component';
+import { CoursesListComponent } from './components/courses-list/courses-list.component';
 
 
 
