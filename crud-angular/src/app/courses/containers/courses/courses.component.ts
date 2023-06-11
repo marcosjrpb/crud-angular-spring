@@ -15,7 +15,7 @@ import { CoursesService } from '../../services/courses.service';
 export class CoursesComponent implements OnInit{
 
    courses$: Observable<Course[]>;
-  displayedColumns = ['name','category','actions'];
+   displayedColumns = ['name','category','actions'];
 
   //coursesService: CoursesService;
 
@@ -49,12 +49,14 @@ export class CoursesComponent implements OnInit{
 
 
   }
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void { }
 
   onAdd(){
     this.router.navigate(['new'], {relativeTo: this.route});
+  }
+
+  onEdit(course: Course){
+    this.router.navigate(['edit',course._id], {relativeTo: this.route});
   }
 
 }

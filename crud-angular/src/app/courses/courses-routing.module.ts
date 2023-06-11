@@ -3,10 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { CoursesComponent } from './containers/courses/courses.component';
 import { CourseFormComponent } from './containers/course-form/course-form.component';
 
-
 const routes: Routes = [
   {path:'', component: CoursesComponent},
-  {path:'new', component: CourseFormComponent}
+  {path:'new', component: CourseFormComponent},
+  {path:'edit/:id', component: CourseFormComponent},
 ];
 
 @NgModule({
