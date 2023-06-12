@@ -21,9 +21,8 @@ export class CoursesListComponent {
     this.add.emit(true);
   }
 
-  onEdit(course: Course){
-        this.edit.emit(course);
-
+  onEdit(course: Course) {
+    this.edit.emit(course);
   }
 
 

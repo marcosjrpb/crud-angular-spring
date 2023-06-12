@@ -1,9 +1,11 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { NonNullableFormBuilder} from '@angular/forms';
+import { NonNullableFormBuilder } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ActivatedRoute } from '@angular/router';
 
 import { CoursesService } from '../../services/courses.service';
+import { Course } from '../../model/course';
 
 
 @Component({
@@ -22,12 +24,14 @@ export class CourseFormComponent implements OnInit{
 constructor(private formBuilder:  NonNullableFormBuilder,
    private service: CoursesService,
    private snackBar: MatSnackBar,
-   private location: Location){
+   private location: Location,
+   private route: ActivatedRoute){
 
 }
 
 ngOnInit(): void {
-  //  TODO document why this method 'ngOnInit' is empty
+   const course: Course = this.route.snapshot.data['course'];
+   console.log(course);
 
 }
 
