@@ -1,11 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute, Router } from '@angular/router';
-import { catchError, Observable, of } from 'rxjs';
-import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/error-dialog.component';
+import { Component, OnInit } from "@angular/core";
+import { Course } from "../../model/course";
+import { CoursesService } from "../../services/courses.service";
+import { MatDialog } from "@angular/material/dialog";
+import { ActivatedRoute, Router } from "@angular/router";
 
-import { Course } from '../../model/course';
-import { CoursesService } from '../../services/courses.service';
+import { ErrorDialogComponent } from "src/app/shared/components/error-dialog/error-dialog.component";
+import { Observable, catchError, of } from "rxjs";
+
+
+
+
+
 
 @Component({
   selector: 'app-courses',
@@ -56,6 +61,7 @@ export class CoursesComponent implements OnInit{
 
   onEdit(course: Course) {
     this.router.navigate(['edit', course._id], { relativeTo: this.route });
+
   }
 
 }

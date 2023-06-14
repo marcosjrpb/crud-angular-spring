@@ -4,8 +4,8 @@ import { NonNullableFormBuilder } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 
-import { CoursesService } from '../../services/courses.service';
 import { Course } from '../../model/course';
+import { CoursesService } from '../../services/courses.service';
 
 
 @Component({
@@ -17,6 +17,7 @@ import { Course } from '../../model/course';
 export class CourseFormComponent implements OnInit{
 
  form = this.formBuilder.group({
+  _id: [''],
   name: [''],
   category:['']
 });
@@ -31,7 +32,12 @@ constructor(private formBuilder:  NonNullableFormBuilder,
 
 ngOnInit(): void {
    const course: Course = this.route.snapshot.data['course'];
-   console.log(course);
+   this.form.setValue({
+    _id: course._id,
+    name: course.name,
+    category: course.category
+});
+
 
 }
 
