@@ -7,6 +7,7 @@ import { SharedModule } from '../shared/shared.module';
 import { CoursesRoutingModule } from './courses-routing.module';
 import { CoursesComponent } from './containers/courses/courses.component';
 import { CoursesListComponent } from './components/courses-list/courses-list.component';
+import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
 
 
 
@@ -14,6 +15,7 @@ import { CoursesListComponent } from './components/courses-list/courses-list.com
   declarations: [
     CoursesComponent,
     CoursesListComponent,
+    ConfirmationDialogComponent,
   ],
   imports: [
     CommonModule,
@@ -21,10 +23,11 @@ import { CoursesListComponent } from './components/courses-list/courses-list.com
     AppMaterialModule,
     SharedModule,
     ReactiveFormsModule,
-
-
-
+  ],
+  exports:[
+    ConfirmationDialogComponent,
   ]
+
 })
 export class CoursesModule { }
 
