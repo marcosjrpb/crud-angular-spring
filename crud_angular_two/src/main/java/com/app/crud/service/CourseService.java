@@ -5,11 +5,9 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import com.app.crud.dto.CourseDTO;
 import com.app.crud.dto.mapper.CourseMapper;
-import com.app.crud.enums.Category;
 import com.app.crud.exception.RecordNotFoundException;
 import com.app.crud.repository.CourseRepository;
 

@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import com.app.crud.enums.Category;
-import com.app.crud.enums.Status;
 import com.app.crud.model.Course;
+import com.app.crud.model.Lesson;
 import com.app.crud.repository.CourseRepository;
 
 @SpringBootApplication
@@ -26,21 +26,20 @@ public class CrudAngularTwoApplication {
 			 courseRepository.deleteAll();
 			 
 			 Course c = new Course();
-			 Course c2 = new Course();
-			 Course c3 = new Course();
+			 Lesson l = new Lesson();	 
+			 
 			 c.setName("Angular com Spring");
-			 c.setCategory(Category.BACK_END);
+			 c.setCategory(Category.FRONT_END);
+			
+			 l.setName("Introdução");
+			 l.setYouTubeUrl("watch?v=hSEgsZ3nX98");
+			 l.setCourse(c);
+			 c.getLessons().add(l);
 		
-		
-			 c2.setName("Java Mobile");
-			 c2.setCategory(Category.FRONT_END);
-		
-			 c3.setName("Flutter");
-			 c3.setCategory(Category.BACK_END);
 			 
 			 courseRepository.save(c);
-			 courseRepository.save(c2);
-			 courseRepository.save(c3);
+		
+			 
 		 };
 	 
 	}
