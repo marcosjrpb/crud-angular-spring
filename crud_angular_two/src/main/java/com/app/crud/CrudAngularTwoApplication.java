@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import com.app.crud.enums.Category;
+import com.app.crud.enums.Status;
 import com.app.crud.model.Course;
 import com.app.crud.repository.CourseRepository;
 
@@ -29,6 +30,7 @@ public class CrudAngularTwoApplication {
 			 Course c3 = new Course();
 			 c.setName("Angular com Spring");
 			 c.setCategory(Category.BACK_END);
+		
 		
 			 c2.setName("Java Mobile");
 			 c2.setCategory(Category.FRONT_END);

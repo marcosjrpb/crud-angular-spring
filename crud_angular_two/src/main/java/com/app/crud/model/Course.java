@@ -5,14 +5,14 @@ import org.hibernate.annotations.Where;
 import org.hibernate.validator.constraints.Length;
 
 import com.app.crud.enums.Category;
+import com.app.crud.enums.Status;
 import com.app.crud.enums.converters.CategoryConverter;
+import com.app.crud.enums.converters.StatusConverter;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -26,8 +26,6 @@ import lombok.Data;
 @Entity
 @SQLDelete(sql = "UPDATE Course SET status = 'Inativo' WHERE id = ?")
 @Where(clause = "status = 'Ativo'")
-
-//@Table(name = "curso") -- caso a tabela tenha o nome diferente da class
 
 public class Course {	
      	
@@ -44,16 +42,13 @@ public class Course {
 	
 	
 	@NotNull
-	@Length(max = 10)
-	@Pattern(regexp = "Back-end|Front-end")	
 	@Column(length = 10,nullable = false)
 	@Convert(converter = CategoryConverter.class)
 	private  Category category;
 	
-	@NotNull
-	@Length(max = 10)
-	@Pattern(regexp = "Ativo|Inativo")	
+	@NotNull	 	
 	@Column(length = 200, nullable = false)
-	private String status = "Ativo";
+	@Convert(converter = StatusConverter.class)
+	private Status status = Status.ATIVO;
 
 }

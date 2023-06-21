@@ -1,16 +1,15 @@
 package com.app.crud.enums;
 
-public enum Category {
+public enum Status {
 	
-	BACK_END("Back-end"),
-	FRONT_END("Front-end");	
+	ATIVO("Ativo"),
+	INATIVO("Inativo");
 	
 	private String value;
 	
-	private Category(String value){
-		this.value = value;
+	private Status(String valeu) {
+		this.value = valeu;
 	}
-
 	public String getValue() {
 		return value;
 	}
@@ -19,6 +18,6 @@ public enum Category {
 	public String toString() {
 		// TODO Auto-generated method stub
 		return value;
-	}	
-	
+	}
+
 }
