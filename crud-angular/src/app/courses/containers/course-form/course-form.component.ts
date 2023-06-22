@@ -1,11 +1,12 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { NonNullableFormBuilder, Validators } from '@angular/forms';
+import { FormGroup, NonNullableFormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterStateSnapshot } from '@angular/router';
 
 import { Course } from '../../model/course';
 import { CoursesService } from '../../services/courses.service';
+import { Lesson } from '../../model/lesson';
 
 
 @Component({
@@ -16,11 +17,15 @@ import { CoursesService } from '../../services/courses.service';
 })
 export class CourseFormComponent implements OnInit{
 
- form = this.formBuilder.group({
+  form!: FormGroup;
+
+/* form = this.formBuilder.group({
   _id: [''],
-  name: ['',[Validators.required, Validators.minLength(5), Validators.maxLength(100)]],
+  name: ['',[Validators.required,
+     Validators.minLength(5),
+      Validators.maxLength(100)]],
   category:['',Validators.required]
-});
+});*/
 
 constructor(private formBuilder:  NonNullableFormBuilder,
    private service: CoursesService,
@@ -31,13 +36,44 @@ constructor(private formBuilder:  NonNullableFormBuilder,
 }
 
 ngOnInit(): void {
-   const course: Course = this.route.snapshot.data['course'];
-   this.form.setValue({
-    _id: course._id,
-    name: course.name,
-    category: course.category
-});
 
+    const course: Course = this.route.snapshot.data['course'];
+        this.form = this.formBuilder.group({
+          _id: [''],
+          name: ['',[Validators.required,
+            Validators.minLength(5),
+              Validators.maxLength(100)]],
+          category:[course.category,Validators.required],
+          lessons: this.formBuilder.array(this.retriveLessons(course))
+
+        });
+           /*const course: Course = this.route.snapshot.data['course'];
+              this.form.setValue({
+                _id: course._id,
+                name: course.name,
+                category: course.category*/
+
+        }
+
+
+
+private retriveLessons(course: Course){
+  const lessons = [];
+  if(course?.lessons){
+    course.lessons.forEach(lesson => lessons.push(this.createlesson(lesson)))
+  }else{
+    lessons.push(this.createlesson());
+  }
+  return lessons;
+
+}
+
+private createlesson(lesson: Lesson = {_id:'',name:'',youTubeUrl:''}){
+  return this.formBuilder.group({
+    _id:[lesson._id],
+    name:[lesson.name],
+    youTubeUrl:[lesson.youTubeUrl]
+  });
 
 }
 

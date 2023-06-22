@@ -8,6 +8,7 @@ import { CoursesRoutingModule } from './courses-routing.module';
 import { CoursesComponent } from './containers/courses/courses.component';
 import { CoursesListComponent } from './components/courses-list/courses-list.component';
 import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
+import { LessonTsComponent } from './model/lesson.ts/lesson.ts.component';
 
 
 
@@ -16,6 +17,7 @@ import { ConfirmationDialogComponent } from './components/confirmation-dialog/co
     CoursesComponent,
     CoursesListComponent,
     ConfirmationDialogComponent,
+    LessonTsComponent,
   ],
   imports: [
     CommonModule,
