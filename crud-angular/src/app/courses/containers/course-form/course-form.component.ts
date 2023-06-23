@@ -1,12 +1,12 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, NonNullableFormBuilder, Validators } from '@angular/forms';
+import { FormGroup, NonNullableFormBuilder, UntypedFormArray, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ActivatedRoute, RouterStateSnapshot } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 import { Course } from '../../model/course';
-import { CoursesService } from '../../services/courses.service';
 import { Lesson } from '../../model/lesson';
+import { CoursesService } from '../../services/courses.service';
 
 
 @Component({
@@ -68,13 +68,16 @@ private retriveLessons(course: Course){
 
 }
 
-private createlesson(lesson: Lesson = {_id:'',name:'',youTubeUrl:''}){
+private createlesson(lesson: Lesson = {_id:'', name:'', youTubeUrl:''}){
   return this.formBuilder.group({
     _id:[lesson._id],
     name:[lesson.name],
     youTubeUrl:[lesson.youTubeUrl]
   });
 
+}
+getLessonsFormArray(){
+  return (<UntypedFormArray>this.form.get('lessons')).controls;
 }
 
   onSubmit() {
